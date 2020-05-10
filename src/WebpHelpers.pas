@@ -155,6 +155,7 @@ begin
   stream := TMemoryStream.Create;
   WebpLosslessEncode(stream, img);
   stream.Position := 0;
+  SetLength(buffer, stream.Size);
   stream.ReadData(buffer, stream.Size);
   stream.Free;
 end;
