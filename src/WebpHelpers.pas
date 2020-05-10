@@ -119,6 +119,7 @@ begin
   stream := TMemoryStream.Create;
   WebpEncode(stream, img, quality_factor);
   stream.Position := 0;
+  SetLength(buffer, stream.Size);
   stream.ReadData(buffer, stream.Size);
   stream.Free;
 end;
