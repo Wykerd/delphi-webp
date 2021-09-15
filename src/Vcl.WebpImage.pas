@@ -72,9 +72,12 @@ var
 begin
   WebPFree(FData);
   fs := TFileStream.Create(filename, fmOpenRead);
-  WebpDecode(fs, data, FBitmap);
-  FData := data;
-  fs.Free;
+  try
+    WebpDecode(fs, data, FBitmap);
+    FData := data;
+  finally
+    fs.Free;
+  end;
   Paint;
 end;
 
@@ -134,8 +137,8 @@ begin
 
   // Draw to canvas
   Canvas.Lock;
+  G := TGPGraphics.Create(Canvas.Handle);
   try
-    G := TGPGraphics.Create(Canvas.Handle);
     G.SetCompositingMode(CompositingModeSourceOver);
     G.SetInterpolationMode(InterpolationModeDefault);
     G.SetPixelOffsetMode(PixelOffsetModeHighQuality);
@@ -143,8 +146,8 @@ begin
     G.DrawImage(bitmap, destRect, srcRect.x, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
   finally
     G.Free;
+    Canvas.Unlock;
   end;
-  Canvas.Unlock;
 end;
 
 procedure TWebpImage.SetCenter(const Value: boolean);
