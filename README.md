@@ -10,7 +10,7 @@ Provides API and helper functions to use [libwebp by Google](https://developers.
 
 # Usage
 
-You need to download or compile the latest libwebp dynamic link library to use this library. See [BUILDING.md](/BUILDING.md) for build instructions.
+You need to download or compile the latest libwebp dynamic link library to use this library. See [BUILDING.md](/BUILDING.md) for build instructions. Alternatively, you may use the included precompiled libraries in `bin\`, note however this requires [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
 
 You can use the libwebp.pas unit to interact directly with the libwebp API, documentation for the API is available at https://developers.google.com/speed/webp/docs/api or you can use the WebpHelpers.pas unit which provide easy to use helper functions which wrap around the API. See below for documentation regarding the helpers.
 
